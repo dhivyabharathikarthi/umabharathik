@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#060b1f">
+<meta name="description" content="Umabharathi K — Healthcare Operations & Quality Specialist and Biotechnology Researcher. Therapy scheduling, clinician coordination, RT-PCR / ELISA quality control, and TiO2 nanoparticle research.">
+<title>Umabharathi K — Healthcare Operations & Biotechnology</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23060b1f'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%2338e1ff' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23a78bfa'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<style>
+:root{
+  --bg:#060b1f; --bg2:#0b1533;
+  --panel:rgba(8,14,32,.80); --panel-soft:rgba(8,14,32,.74);
+  --line:rgba(148,190,255,.16);
+  --ink:#eef5ff; --body-c:#c9d7ee; --mut:#9fb3d4;
+  --cyan:#38e1ff; --teal:#2fe6c8; --emer:#4ade80; --vio:#a78bfa;
+  --pur:#8b5cf6; --amber:#fbbf24; --rose:#fb7185; --blue:#60a5fa;
+  --grad:linear-gradient(120deg,#38e1ff,#2fe6c8 38%,#a78bfa 72%,#fb7185);
+  --disp:'Space Grotesk',sans-serif; --sans:'Plus Jakarta Sans',sans-serif; --mono:'JetBrains Mono',monospace;
+  --tabh:62px;
+}
+*{margin:0;padding:0;box-sizing:border-box;scrollbar-width:thin;scrollbar-color:rgba(56,225,255,.55) rgba(8,14,32,.7)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:rgba(8,14,32,.75)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#38e1ff,#8b5cf6);border-radius:99px;border:2px solid rgba(8,14,32,.9)}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#7ff0ff,#a78bfa)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans); color:var(--body-c); background:
+  radial-gradient(1100px 700px at 78% 12%, #101d42 0%, transparent 60%),
+  radial-gradient(900px 700px at 12% 85%, #0d1a3a 0%, transparent 55%),
+  linear-gradient(180deg,var(--bg) 0%,var(--bg2) 55%,var(--bg) 100%);
+  min-height:100vh; overflow-x:hidden; line-height:1.65;
+  -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
+}
+body.dragging{user-select:none;-webkit-user-select:none}
+[hidden]{display:none!important}
+::selection{background:rgba(56,225,255,.28);color:#fff}
+a{color:var(--cyan);text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+
+/* ---------- layers ---------- */
+#lab{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;opacity:0;transition:opacity 1.2s ease}
+body.ready #lab{opacity:1}
+#fallback{position:fixed;inset:0;z-index:0;background:
+  radial-gradient(700px 500px at 80% 15%, rgba(56,225,255,.14), transparent 60%),
+  radial-gradient(700px 520px at 12% 30%, rgba(167,139,250,.14), transparent 60%),
+  radial-gradient(800px 560px at 55% 90%, rgba(74,222,128,.10), transparent 60%),
+  repeating-linear-gradient(0deg, rgba(120,190,255,.045) 0 1px, transparent 1px 90px),
+  repeating-linear-gradient(90deg, rgba(120,190,255,.045) 0 1px, transparent 1px 90px);}
+.scrim{position:fixed;inset:0;z-index:1;pointer-events:none;background:
+  radial-gradient(120% 90% at 50% 45%, transparent 42%, rgba(3,6,16,.55) 100%),
+  linear-gradient(180deg, rgba(4,8,20,.30), rgba(4,8,20,.16) 30%, rgba(4,8,20,.42));}
+body.no3d #lab{display:none}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:60;border-radius:0 3px 3px 0}
+
+/* ---------- nav ---------- */
+#topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:20px;
+  padding:12px 22px;background:rgba(6,11,27,.88);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:11px;color:var(--ink);font-family:var(--disp);font-weight:700;font-size:1.02rem;letter-spacing:.2px}
+.brand-badge{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-family:var(--mono);font-size:.8rem;font-weight:600;color:#04101f;background:var(--grad);flex:none}
+#menu{display:flex;gap:4px;margin-left:auto}
+#menu a{font-family:var(--mono);font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);padding:8px 11px;border-radius:8px;position:relative;transition:color .2s}
+#menu a:hover{color:var(--ink)}
+#menu a.active{color:var(--cyan)}
+#menu a.active::after{content:"";position:absolute;left:11px;right:11px;bottom:3px;height:2px;background:var(--grad);border-radius:2px}
+.head-cta{display:none;margin-left:auto;font-family:var(--mono);font-size:.66rem;letter-spacing:1.4px;text-transform:uppercase;font-weight:600;
+  color:#04101f;background:linear-gradient(120deg,#22d3ee,#8b5cf6);border-radius:99px;padding:9px 16px}
+
+/* ---------- layout ---------- */
+main{position:relative;z-index:2}
+.section{max-width:1140px;margin:0 auto;padding:110px 24px 30px;scroll-margin-top:70px}
+.sec-head{margin-bottom:34px;text-shadow:0 2px 14px rgba(2,5,14,.95),0 1px 3px rgba(2,5,14,.9)}
+.kicker{font-family:var(--mono);font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--acc,var(--cyan));display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.kicker::after{content:"";height:1px;width:64px;background:linear-gradient(90deg,var(--acc,var(--cyan)),transparent);flex:none}
+h2{font-family:var(--disp);font-weight:700;font-size:clamp(1.7rem,3.4vw,2.5rem);color:var(--ink);letter-spacing:-.5px}
+.sec-sub{max-width:640px;margin-top:10px;color:var(--body-c)}
+.panel{background:var(--panel);-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);
+  border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding-top:120px;position:relative}
+.hero-inner{max-width:740px;padding:44px 46px;background:var(--panel-soft);-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);
+  border:1px solid var(--line);border-radius:26px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.hero-eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(2.5rem,6.2vw,4.3rem);line-height:1.05;letter-spacing:-1.5px;
+  background:linear-gradient(110deg,#7ff0ff 5%,#2fe6c8 35%,#a78bfa 70%,#fb7185 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 14px rgba(3,7,18,.9))}
+.role{font-family:var(--disp);font-weight:600;font-size:clamp(1rem,2vw,1.22rem);color:var(--ink);margin:14px 0 16px}
+.role b{color:var(--amber);font-weight:600;padding:0 6px}
+.lede{font-size:1.03rem;color:#d7e2f6;max-width:600px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin:26px 0 18px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.92rem;border-radius:12px;padding:13px 22px;border:1px solid transparent;transition:transform .2s,box-shadow .2s,filter .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:linear-gradient(120deg,#22d3ee,#8b5cf6);color:#04101f;box-shadow:0 10px 30px rgba(56,180,255,.25)}
+.btn.primary:hover{filter:brightness(1.12)}
+.btn.ghost{background:rgba(148,190,255,.07);border-color:var(--line);color:var(--ink)}
+.btn.ghost:hover{border-color:rgba(56,225,255,.55)}
+.btn.small{padding:11px 18px;font-size:.82rem;border-radius:10px}
+.loc{font-family:var(--mono);font-size:.72rem;letter-spacing:1.8px;color:var(--mut);text-transform:uppercase}
+.loc em{font-style:normal;color:var(--teal)}
+.note{margin-top:14px;font-size:.82rem;color:var(--amber);border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.08);border-radius:10px;padding:10px 14px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.stat{background:rgba(10,18,40,.65);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.stat strong{display:block;font-family:var(--disp);font-size:1.45rem;font-weight:700;line-height:1.15}
+.stat span{font-size:.74rem;color:var(--mut);letter-spacing:.3px;display:block}
+.s-cyan strong{color:var(--cyan)} .s-emer strong{color:var(--emer)} .s-vio strong{color:var(--vio)} .s-amber strong{color:var(--amber)}
+.scroll-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:26px;height:42px;border:2px solid rgba(148,190,255,.4);border-radius:14px;display:block}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:3px;background:var(--cyan);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(0);opacity:1}55%{transform:translateY(14px);opacity:.2}}
+.swipe-hint{display:none;align-items:center;gap:10px;margin-bottom:12px;padding:9px 12px;border-radius:12px;
+  background:rgba(8,14,32,.7);border:1px solid var(--line);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.swipe-hint p{font-family:var(--mono);font-size:.6rem;letter-spacing:.9px;text-transform:uppercase;color:var(--body-c);flex:1;line-height:1.5}
+.swipe-hint svg{width:20px;height:20px;color:var(--cyan);flex:none}
+.swipe-hint button{background:none;border:none;color:var(--mut);font-size:1.1rem;line-height:1;padding:2px 4px}
+
+/* ---------- capability cards ---------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{position:relative;padding:26px 24px 22px;overflow:hidden;transition:transform .25s ease,border-color .25s,box-shadow .25s}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--acc),transparent 80%)}
+.card:hover{border-color:var(--acc);box-shadow:0 26px 60px rgba(0,0,0,.5),0 0 0 1px var(--acc) inset}
+.card.active{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc) inset,0 0 34px -8px var(--acc)}
+.card[data-artifact]{cursor:pointer}
+.card-icon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;color:var(--acc);background:rgba(148,190,255,.07);border:1px solid var(--line);margin-bottom:16px}
+.card-icon svg{width:26px;height:26px}
+.card h3{font-family:var(--disp);font-size:1.13rem;font-weight:600;color:var(--ink);margin-bottom:9px;letter-spacing:-.2px}
+.card p{font-size:.9rem;color:var(--body-c)}
+.card-k{font-family:var(--mono);font-size:.66rem;letter-spacing:2px;color:var(--acc);text-transform:uppercase;margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+.tag{font-size:.72rem;font-weight:600;color:#d4e1f6;background:rgba(148,190,255,.08);border:1px solid rgba(148,190,255,.2);border-radius:99px;padding:4px 11px;max-width:100%}
+.view3d{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:.68rem;letter-spacing:1.6px;color:var(--acc);text-transform:uppercase;background:none;border:none;padding:6px 0;text-align:left}
+.card:hover .view3d{text-decoration:underline}
+.wide{margin-top:18px}
+.wide .tags{margin-top:12px}
+
+/* ---------- experience ---------- */
+.timeline{position:relative;padding-left:26px;display:flex;flex-direction:column;gap:20px}
+.timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--emer),var(--cyan),transparent)}
+.t-item{position:relative;padding:26px 28px}
+.t-dot{position:absolute;left:-26px;top:32px;width:16px;height:16px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px rgba(8,14,32,.9),0 0 16px var(--acc)}
+.t-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.t-head h3{font-family:var(--disp);font-size:1.2rem;font-weight:600;color:var(--ink)}
+.t-dates{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;color:var(--acc);white-space:nowrap}
+.t-org{font-weight:600;color:var(--mut);font-size:.9rem;margin:4px 0 12px}
+.t-item ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.t-item li{position:relative;padding-left:20px;font-size:.92rem;color:var(--body-c)}
+.t-item li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--acc);opacity:.85;transform:rotate(45deg)}
+
+/* ---------- research ---------- */
+.focus-card{padding:28px;margin-bottom:18px}
+.focus-card h3{font-family:var(--disp);font-size:1.25rem;font-weight:600;color:var(--ink);max-width:760px;line-height:1.4}
+.formula{font-family:var(--mono);color:var(--amber);font-weight:600}
+.pub-list{display:flex;flex-direction:column;gap:12px}
+.pub{display:flex;gap:16px;align-items:flex-start;padding:18px 22px}
+.badge{flex:none;font-family:var(--mono);font-size:.62rem;letter-spacing:1.2px;text-transform:uppercase;border-radius:7px;padding:5px 9px;margin-top:2px}
+.b-vio{color:var(--vio);background:rgba(167,139,250,.13);border:1px solid rgba(167,139,250,.4)}
+.b-amber{color:var(--amber);background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.4)}
+.pub h4{font-size:.97rem;font-weight:600;color:var(--ink);line-height:1.45}
+.pub cite{display:block;font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--mut);margin-top:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.mini{padding:22px 24px}
+.mini h4{font-family:var(--disp);font-size:1rem;font-weight:600;color:var(--ink);margin:6px 0 6px}
+.mini p{font-size:.87rem}
+.mini .t-dates{display:block;margin-bottom:2px}
+.sub-h{font-family:var(--mono);font-size:.72rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--mut);margin:30px 0 14px;text-shadow:0 1px 6px rgba(2,5,14,.9)}
+
+/* ---------- education / contact ---------- */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.gpa{display:inline-block;margin-top:12px;font-family:var(--mono);font-size:.74rem;color:var(--acc);border:1px solid var(--acc);border-radius:99px;padding:4px 13px;background:rgba(8,14,32,.5)}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.c-card{padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+.c-label{font-family:var(--mono);font-size:.66rem;letter-spacing:2.2px;color:var(--acc);text-transform:uppercase}
+.c-value{font-weight:700;font-size:.98rem;color:var(--ink);word-break:break-word}
+.c-value a{color:var(--ink)} .c-value a:hover{color:var(--acc)}
+.c-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+.c-note{font-size:.82rem;color:var(--mut)}
+
+/* ---------- 3D stages (mobile showcase windows) ---------- */
+.stage{display:none}
+
+/* ---------- dock / tabbar / footer / inspector / toast ---------- */
+#dock{position:fixed;right:22px;bottom:22px;z-index:45;display:flex;gap:6px;padding:6px;border-radius:99px;
+  background:rgba(8,14,32,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 18px 44px rgba(0,0,0,.5)}
+#dock button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:rgba(148,190,255,.07);color:var(--ink);display:grid;place-items:center;transition:border-color .2s,color .2s,transform .2s}
+#dock button:hover{border-color:var(--cyan);color:var(--cyan)}
+#dock button:active{transform:scale(.92)}
+#dock svg{width:18px;height:18px}
+body.no3d #dock{display:none}
+#tabbar{display:none}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);background:rgba(6,11,27,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);margin-top:90px}
+.foot-in{max-width:1140px;margin:0 auto;padding:26px 24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.82rem;color:var(--mut)}
+.foot-in a{font-family:var(--mono);font-size:.72rem;letter-spacing:1.5px}
+#inspector{position:fixed;left:22px;bottom:22px;z-index:46;width:340px;max-width:calc(100vw - 44px);padding:20px 22px;border-left:3px solid var(--acc,var(--cyan))}
+.i-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;gap:10px}
+#i-kicker{font-family:var(--mono);font-size:.64rem;letter-spacing:2px;color:var(--acc,var(--cyan));text-transform:uppercase}
+#i-close{background:none;border:1px solid var(--line);color:var(--mut);width:32px;height:32px;border-radius:9px;font-size:1.1rem;line-height:1;flex:none}
+#i-close:hover{color:var(--ink);border-color:var(--mut)}
+#i-title{font-family:var(--disp);font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+#i-desc{font-size:.84rem;color:var(--body-c)}
+.i-hint{font-family:var(--mono);font-size:.62rem;letter-spacing:1.4px;color:var(--mut);margin-top:12px;text-transform:uppercase}
+#toast{position:fixed;top:74px;left:50%;transform:translate(-50%,-12px);z-index:70;background:rgba(8,16,36,.95);border:1px solid rgba(74,222,128,.5);color:var(--ink);font-size:.85rem;font-weight:600;border-radius:12px;padding:11px 20px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;box-shadow:0 14px 40px rgba(0,0,0,.5);max-width:92vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- reveal ---------- */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+.grid3 .reveal:nth-child(2),.edu-grid .reveal:nth-child(2),.contact-grid .reveal:nth-child(2){transition-delay:.1s}
+.grid3 .reveal:nth-child(3),.contact-grid .reveal:nth-child(3){transition-delay:.2s}
+
+/* ---------- tablet ---------- */
+@media (max-width:1024px){
+  .section{padding:100px 20px 26px}
+  .hero-inner{padding:36px 34px}
+}
+@media (max-width:960px){
+  .grid3,.contact-grid{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:760px){
+  body{padding-bottom:calc(var(--tabh) + env(safe-area-inset-bottom) + 10px)}
+  #menu{display:none}
+  .head-cta{display:inline-block}
+  #topbar{padding:10px 14px;gap:10px}
+  .brand{font-size:.95rem;gap:9px}
+  .brand-badge{width:30px;height:30px;font-size:.72rem}
+
+  .section{padding:66px 15px 14px;scroll-margin-top:62px}
+  .sec-head{margin-bottom:20px}
+  .kicker{font-size:.62rem;letter-spacing:1.6px;gap:8px;margin-bottom:8px}
+  .kicker::after{display:none}
+  h2{font-size:1.55rem;letter-spacing:-.3px}
+  .sec-sub{font-size:.9rem;margin-top:8px}
+
+  .hero{flex-direction:column;justify-content:flex-end;align-items:stretch;min-height:100svh;padding:78px 15px 16px}
+  .hero-inner{max-width:none;width:100%;padding:22px 19px;border-radius:20px}
+  .hero-eyebrow{font-size:.58rem;letter-spacing:1.3px;margin-bottom:10px}
+  h1{font-size:2.15rem;letter-spacing:-.8px}
+  .role{font-size:.9rem;margin:9px 0 11px}
+  .role b{padding:0 4px}
+  .lede{font-size:.91rem}
+  .cta-row{margin:17px 0 13px;gap:9px;flex-wrap:nowrap}
+  .cta-row .btn{flex:1;justify-content:center;padding:13px 10px;font-size:.83rem;min-height:46px}
+  .loc{font-size:.58rem;letter-spacing:1px}
+  .stats{gap:8px;margin-top:16px}
+  .stat{padding:10px 12px;border-radius:12px}
+  .stat strong{font-size:1.14rem}
+  .stat span{font-size:.65rem;line-height:1.35}
+  .scroll-cue{display:none}
+  .swipe-hint{display:flex}
+
+  .grid3,.grid2,.edu-grid,.contact-grid{grid-template-columns:1fr;gap:13px}
+  .card{padding:20px 18px 18px;border-radius:17px}
+  .card-icon{width:40px;height:40px;margin-bottom:12px;border-radius:11px}
+  .card-icon svg{width:22px;height:22px}
+  .card h3{font-size:1.04rem}
+  .card p{font-size:.87rem}
+  .card-k{font-size:.6rem;letter-spacing:1.5px;margin-bottom:9px}
+  .tags{gap:6px;margin-top:12px}
+  .tag{font-size:.7rem;padding:5px 10px;white-space:normal}
+  .view3d{margin-top:12px;padding:9px 0;font-size:.65rem}
+  .wide{margin-top:13px}
+
+  .timeline{padding-left:20px;gap:14px}
+  .timeline::before{left:5px}
+  .t-item{padding:19px 17px;border-radius:17px}
+  .t-dot{left:-20px;top:24px;width:13px;height:13px}
+  .t-head{gap:4px}
+  .t-head h3{font-size:1.06rem;width:100%}
+  .t-dates{font-size:.64rem;letter-spacing:1.1px}
+  .t-org{font-size:.83rem;margin:5px 0 10px}
+  .t-item li{font-size:.87rem;padding-left:17px}
+
+  .focus-card{padding:20px 18px;border-radius:17px;margin-bottom:13px}
+  .focus-card h3{font-size:1.02rem}
+  .pub-list{gap:10px}
+  .pub{padding:16px 17px;gap:11px;flex-direction:column;border-radius:17px}
+  .badge{margin-top:0}
+  .pub h4{font-size:.91rem}
+  .pub cite{font-size:.68rem}
+  .grid2{margin-top:13px}
+  .mini{padding:18px 17px;border-radius:17px}
+  .sub-h{margin:22px 0 11px;font-size:.65rem;letter-spacing:1.7px}
+  .gpa{font-size:.7rem}
+
+  .c-card{padding:19px 17px;border-radius:17px}
+  .c-actions .btn{flex:1;justify-content:center;min-height:44px}
+  .c-value{font-size:.92rem}
+
+  .stage{display:block;position:relative;height:236px;margin:22px 15px 0}
+  .stage-cap{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:9px;padding:11px 13px;
+    background:rgba(8,14,32,.76);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:15px}
+  .stage-cap p{font-family:var(--mono);font-size:.58rem;letter-spacing:1.1px;color:var(--mut);text-transform:uppercase;display:flex;align-items:center;gap:7px}
+  .stage-cap p svg{width:15px;height:15px;color:var(--cyan);flex:none}
+  .stage-chips{display:flex;gap:6px}
+  .chip{flex:1;font-family:var(--mono);font-size:.6rem;letter-spacing:.6px;padding:9px 6px;border-radius:99px;border:1px solid var(--line);
+    background:rgba(148,190,255,.08);color:var(--body-c);text-transform:uppercase;min-height:38px;transition:.2s}
+  .chip.active{color:#04101f;background:var(--acc);border-color:var(--acc);font-weight:600}
+
+  #dock{right:auto;left:50%;transform:translateX(-50%);bottom:calc(var(--tabh) + env(safe-area-inset-bottom) + 9px)}
+  #dock button{width:42px;height:42px}
+  body.inspecting #dock{display:none}
+
+  #tabbar{display:grid;grid-template-columns:repeat(6,1fr);position:fixed;left:0;right:0;bottom:0;z-index:55;gap:2px;
+    padding:5px 4px calc(5px + env(safe-area-inset-bottom));background:rgba(6,11,27,.95);
+    -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--line)}
+  #tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:48px;padding:5px 1px;border-radius:11px;
+    color:var(--mut);font-family:var(--mono);font-size:.53rem;letter-spacing:.2px;text-transform:uppercase;transition:color .2s,background .2s}
+  #tabbar a svg{width:19px;height:19px}
+  #tabbar a.active{color:var(--tc,var(--cyan));background:rgba(148,190,255,.09)}
+
+  footer{margin-top:56px}
+  .foot-in{padding:20px 16px;font-size:.76rem;gap:8px}
+
+  #inspector{left:10px;right:10px;width:auto;max-width:none;bottom:calc(var(--tabh) + env(safe-area-inset-bottom) + 9px);
+    max-height:34vh;overflow-y:auto;padding:16px 17px;border-radius:16px}
+  #i-title{font-size:.98rem}
+  #i-desc{font-size:.81rem}
+  .i-hint{font-size:.56rem;margin-top:9px}
+  #toast{top:64px;font-size:.8rem;padding:10px 16px}
+}
+@media (max-width:380px){
+  h1{font-size:1.95rem}
+  #tabbar a{font-size:.48rem}
+  .cta-row .btn{font-size:.78rem;padding:13px 6px}
+  .stat strong{font-size:1.05rem}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<canvas id="lab" aria-hidden="true"></canvas>
+<div id="fallback" hidden aria-hidden="true"></div>
+<div class="scrim" aria-hidden="true"></div>
+<div id="progress" aria-hidden="true"></div>
+
+<header id="topbar">
+  <a class="brand" href="#hero"><span class="brand-badge">UK</span><span class="brand-name">Umabharathi&nbsp;K</span></a>
+  <nav id="menu" aria-label="Primary">
+    <a href="#skills" data-nav="skills">Capabilities</a>
+    <a href="#experience" data-nav="experience">Experience</a>
+    <a href="#research" data-nav="research">Research</a>
+    <a href="#education" data-nav="education">Education</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+  </nav>
+  <a class="head-cta" href="#contact">Contact</a>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="hero" class="section hero" data-spy data-focus="hero" data-nav="hero">
+    <div class="swipe-hint" id="swipeHint">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h16M7 9l-3 3 3 3M17 9l3 3-3 3"/></svg>
+      <p>Swipe the background sideways to rotate the 3D scene</p>
+      <button id="hintClose" aria-label="Dismiss hint">×</button>
+    </div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow reveal">Biotechnology Researcher · Healthcare Operations &amp; Quality</p>
+      <h1 class="reveal">Umabharathi K</h1>
+      <p class="role reveal">Healthcare Operations &amp; QA <b>|</b> Biotechnology (M.Sc.)</p>
+      <p class="lede reveal">I bring laboratory-grade precision to healthcare operations — pairing hands-on RT-PCR / ELISA quality-control rigor with therapy scheduling accuracy, clinician capacity planning, and dependable cross-time-zone care coordination.</p>
+      <div class="cta-row reveal">
+        <a class="btn primary" href="#skills">Explore My Work <span aria-hidden="true">↓</span></a>
+        <a class="btn ghost" href="#contact">Contact Me</a>
+      </div>
+      <p class="loc reveal"><em>◈</em> Tamil Nadu, India · Remote &amp; onsite</p>
+      <p id="webgl-note" class="note" hidden>Your browser doesn't support WebGL, so a static background is shown. All content and interactions remain fully available.</p>
+      <div class="stats reveal">
+        <div class="stat s-cyan"><strong>500+</strong><span>visits coordinated / week</span></div>
+        <div class="stat s-emer"><strong>10–15+</strong><span>patients scheduled / day</span></div>
+        <div class="stat s-vio"><strong>3</strong><span>TiO₂ publications</span></div>
+        <div class="stat s-amber"><strong>3+ yrs</strong><span>healthcare operations</span></div>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#skills" aria-label="Scroll to capabilities"></a>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section id="skills" class="section" style="--acc:var(--cyan)" data-spy data-focus="skills" data-nav="skills">
+    <div class="sec-head reveal">
+      <p class="kicker">01 · Capabilities</p>
+      <h2>What I Bring to a Team</h2>
+      <p class="sec-sub">Three domains, one standard of accuracy. Select a card — or tap a structure in the scene — to focus the camera on it.</p>
+    </div>
+    <div class="grid3">
+      <article class="card panel tilt reveal" style="--acc:var(--amber)" data-artifact="nano" tabindex="0" role="button" aria-label="Focus 3D view: TiO2 nanoparticle research">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l7 5v10l-7 5-7-5V7z"/><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/><path d="M12 4.5v3M12 16.5v3M5.5 8.5l2.5 1.5M16 14l2.5 1.5" opacity=".6"/></svg></div>
+        <p class="card-k">Nanotech · Antimicrobial Defense</p>
+        <h3>TiO₂ Nanoparticles &amp; Green Synthesis</h3>
+        <p>Green synthesis of titanium dioxide nanoparticles for microbial infection prevention in broiler chickens — from laboratory work to three published papers.</p>
+        <div class="tags"><span class="tag">Green Synthesis</span><span class="tag">TiO₂</span><span class="tag">Antimicrobial Research</span><span class="tag">Nanobiotechnology</span></div>
+        <span class="view3d">View in 3D →</span>
+      </article>
+      <article class="card panel tilt reveal" style="--acc:var(--cyan)" data-artifact="assay" tabindex="0" role="button" aria-label="Focus 3D view: diagnostics and laboratory assays">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9" opacity=".45"/><circle cx="12" cy="12" r="5.5" opacity=".75"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/></svg></div>
+        <p class="card-k">Diagnostics · Laboratory Science</p>
+        <h3>Molecular &amp; Diagnostic Assays</h3>
+        <p>Hands-on molecular diagnostics and quality control across serology, microbiology, and protein-expression workflows.</p>
+        <div class="tags"><span class="tag">RT-PCR</span><span class="tag">Indirect ELISA (IDVET)</span><span class="tag">Serology</span><span class="tag">Microbiology &amp; Cell Culture</span><span class="tag">DNA Analysis</span><span class="tag">Cloning</span><span class="tag">SDS-PAGE</span><span class="tag">Quality Control</span></div>
+        <span class="view3d">View in 3D →</span>
+      </article>
+      <article class="card panel tilt reveal" style="--acc:var(--emer)" data-artifact="ops" tabindex="0" role="button" aria-label="Focus 3D view: healthcare care coordination">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="2.4" fill="currentColor" stroke="none"/><ellipse cx="12" cy="12" rx="9.5" ry="4.2"/><ellipse cx="12" cy="12" rx="9.5" ry="4.2" transform="rotate(60 12 12)" opacity=".55"/><circle cx="21" cy="12" r="1.4" fill="currentColor" stroke="none"/><circle cx="7.5" cy="5" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+        <p class="card-k">Operations · Care Coordination</p>
+        <h3>Healthcare Operations &amp; Scheduling</h3>
+        <p>High-volume therapy and visit scheduling with dependable clinician coordination across time zones — accuracy at every step.</p>
+        <div class="tags"><span class="tag">Therapy &amp; Visit Scheduling</span><span class="tag">10–15+ patients/day</span><span class="tag">500+ visits/week</span><span class="tag">Clinician Capacity Planning</span><span class="tag">RN &amp; Therapist Coordination</span><span class="tag">Data Validation &amp; Reporting</span></div>
+        <span class="view3d">View in 3D →</span>
+      </article>
+    </div>
+    <article class="card panel wide reveal" style="--acc:var(--vio)">
+      <p class="card-k">Tools · Communication</p>
+      <h3>Everyday Toolkit</h3>
+      <div class="tags">
+        <span class="tag">MS Word</span><span class="tag">MS Excel</span><span class="tag">MS PowerPoint</span>
+        <span class="tag">VPN</span><span class="tag">Microsoft Teams</span><span class="tag">Zoom</span>
+        <span class="tag">Cross-Functional Collaboration</span><span class="tag">Strong Verbal &amp; Written Communication</span>
+        <span class="tag">Fast Learning &amp; Adaptability</span>
+        <span class="tag">English Typewriting — Senior Grade, 45 WPM (First Class)</span>
+      </div>
+    </article>
+  </section>
+
+  <!-- MOBILE 3D STAGE -->
+  <div class="stage" data-spy data-focus="skills" data-nav="skills" aria-hidden="false">
+    <div class="stage-cap">
+      <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M7 9l-3 3 3 3M17 9l3 3-3 3"/></svg> Swipe to rotate · tap a structure</p>
+      <div class="stage-chips">
+        <button class="chip" style="--acc:var(--amber)" data-artifact="nano">TiO₂</button>
+        <button class="chip" style="--acc:var(--cyan)" data-artifact="assay">Assays</button>
+        <button class="chip" style="--acc:var(--emer)" data-artifact="ops">Care Ops</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section" style="--acc:var(--emer)" data-spy data-focus="experience" data-nav="experience">
+    <div class="sec-head reveal">
+      <p class="kicker">02 · Experience</p>
+      <h2>Professional Journey</h2>
+    </div>
+    <div class="timeline">
+      <article class="t-item panel reveal" style="--acc:var(--emer)">
+        <span class="t-dot" aria-hidden="true"></span>
+        <div class="t-head"><h3>Senior Scheduler</h3><span class="t-dates">11/2023 — PRESENT</span></div>
+        <p class="t-org">Front Point Global Healthcare · Kerala, India</p>
+        <ul>
+          <li>Schedule and coordinate 10–15+ patient therapy visits per day and 500+ visits per week — matching patient needs, clinician availability, and ordered visit frequency.</li>
+          <li>Collaborate daily with clinicians, RNs, and case managers across time zones; fill urgent visits, handle emergency-patient coordination, and arrange cover for clinician absences.</li>
+          <li>Reduce missed and rescheduled visits through advance confirmation and early conflict resolution with clinicians, patients, and case managers.</li>
+        </ul>
+        <div class="tags"><span class="tag">Visit Scheduling</span><span class="tag">Capacity Planning</span><span class="tag">Escalation Handling</span><span class="tag">Operational Reporting</span></div>
+        <button class="view3d" data-artifact="ops">View coordination network in 3D →</button>
+      </article>
+      <article class="t-item panel reveal" style="--acc:var(--cyan)">
+        <span class="t-dot" aria-hidden="true"></span>
+        <div class="t-head"><h3>Executive — Health &amp; QC</h3><span class="t-dates">10/2020 — 09/2023</span></div>
+        <p class="t-org">Suguna Foods Private Limited · Udumalpet, India</p>
+        <ul>
+          <li>Led the serology department, conducting Indirect ELISA using IDVET kits for flock health monitoring.</li>
+          <li>Performed hands-on RT-PCR and basic microbiological analysis.</li>
+          <li>Maintained detailed, up-to-date records of all tests performed, with computerized spreadsheet reporting to the Assistant General Manager.</li>
+        </ul>
+        <div class="tags"><span class="tag">Serology Lead</span><span class="tag">RT-PCR</span><span class="tag">Indirect ELISA (IDVET)</span><span class="tag">QC Documentation</span></div>
+        <button class="view3d" data-artifact="assay">View assay rings in 3D →</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research" class="section" style="--acc:var(--amber)" data-spy data-focus="research" data-nav="research">
+    <div class="sec-head reveal">
+      <p class="kicker">03 · Research &amp; Publications</p>
+      <h2>Published Science</h2>
+    </div>
+    <article class="focus-card panel reveal" style="--acc:var(--amber)">
+      <p class="card-k">Research Focus</p>
+      <h3>Prevention of Microbial Infection in Broiler Chicken by Green Synthesis of Titanium Dioxide <span class="formula">(TiO₂)</span> Nanoparticles</h3>
+      <button class="view3d" data-artifact="nano">View nanoparticle cluster in 3D →</button>
+    </article>
+    <div class="pub-list">
+      <article class="pub panel reveal"><span class="badge b-vio">Review</span><div><h4>Titanium Dioxide Nanoparticles and Their Characteristics</h4><cite>Trends in Pharmaceutical and Nanotechnology</cite></div></article>
+      <article class="pub panel reveal"><span class="badge b-vio">Review</span><div><h4>Titanium Dioxide Nanoparticles in Food Packaging</h4><cite>IJRAR — International Journal of Research and Analytical Reviews</cite></div></article>
+      <article class="pub panel reveal"><span class="badge b-amber">Research Article</span><div><h4>Prevention of Microbial Infection in Broiler Chicken by Green Synthesis of Titanium Dioxide Nanoparticles</h4><cite>JETIR — Journal of Emerging Technologies and Innovative Research</cite></div></article>
+    </div>
+    <p class="sub-h reveal">Internships</p>
+    <div class="grid2">
+      <article class="mini panel reveal" style="--acc:var(--vio)"><span class="t-dates">MAY 2019</span><h4>OPRL Bioservice</h4><p>DNA analysis, cloning technique, and protein expression by SDS-PAGE.</p></article>
+      <article class="mini panel reveal" style="--acc:var(--teal)"><span class="t-dates">MAY 2017</span><h4>Suguna Foods</h4><p>Poultry farming training — foundations that later shaped my QC and research work.</p></article>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section" style="--acc:var(--blue)" data-spy data-focus="education" data-nav="education">
+    <div class="sec-head reveal">
+      <p class="kicker">04 · Education &amp; Certifications</p>
+      <h2>Academic Foundation</h2>
+    </div>
+    <div class="edu-grid">
+      <article class="mini panel reveal" style="--acc:var(--blue)"><span class="t-dates">2018 — 2020</span><h4>M.Sc. Biotechnology</h4><p>Dr. N.G.P. Arts &amp; Science College, Coimbatore</p><span class="gpa">GPA 7.48</span></article>
+      <article class="mini panel reveal" style="--acc:var(--vio)"><span class="t-dates">2015 — 2018</span><h4>B.Sc. Biotechnology</h4><p>Dr. N.G.P. Arts &amp; Science College, Coimbatore</p><span class="gpa">GPA 7.26</span></article>
+      <article class="mini panel reveal" style="--acc:var(--amber)"><span class="t-dates">2018</span><h4>Senior Grade Typewriting — English</h4><p>Government of Tamil Nadu, Department of Technical Education</p><span class="gpa">First Class · 45 WPM</span></article>
+      <article class="mini panel reveal" style="--acc:var(--emer)"><span class="t-dates">2011</span><h4>Diploma in MS-Office</h4><p>CSC Computer Education</p><span class="gpa">Grade A</span></article>
+    </div>
+  </section>
+
+  <!-- MOBILE 3D STAGE -->
+  <div class="stage" data-spy data-focus="education" data-nav="education">
+    <div class="stage-cap">
+      <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h16M7 9l-3 3 3 3M17 9l3 3-3 3"/></svg> DNA double helix · swipe to rotate</p>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section" style="--acc:var(--teal)" data-spy data-focus="contact" data-nav="contact">
+    <div class="sec-head reveal">
+      <p class="kicker">05 · Contact</p>
+      <h2>Let's Connect</h2>
+      <p class="sec-sub">For opportunities in healthcare operations, scheduling &amp; quality, or biotechnology research — reach out directly.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="c-card panel reveal" style="--acc:var(--cyan)">
+        <span class="c-label">Email</span>
+        <span class="c-value"><a href="mailto:umabharathikarthikeyan@gmail.com">umabharathikarthikeyan@gmail.com</a></span>
+        <div class="c-actions">
+          <button class="btn small primary" data-copy="umabharathikarthikeyan@gmail.com" data-label="Email copied">Copy</button>
+          <a class="btn small ghost" href="mailto:umabharathikarthikeyan@gmail.com">Send Mail</a>
+        </div>
+      </div>
+      <div class="c-card panel reveal" style="--acc:var(--emer)">
+        <span class="c-label">Phone</span>
+        <span class="c-value"><a href="tel:+919486912719">+91 9486912719</a></span>
+        <div class="c-actions">
+          <button class="btn small primary" data-copy="+91 9486912719" data-label="Phone number copied">Copy</button>
+          <a class="btn small ghost" href="tel:+919486912719">Call</a>
+        </div>
+      </div>
+      <div class="c-card panel reveal" style="--acc:var(--vio)">
+        <span class="c-label">Location</span>
+        <span class="c-value">Tamil Nadu, India</span>
+        <p class="c-note">Experienced in remote collaboration across international time zones.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <span>© <span id="year">2026</span> Umabharathi K · Healthcare Operations &amp; Biotechnology</span>
+    <a href="#hero">BACK TO TOP ↑</a>
+  </div>
+</footer>
+
+<div id="dock" role="group" aria-label="3D view controls">
+  <button id="zoomIn" aria-label="Zoom in" title="Zoom in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M11 8v6M8 11h6M16.5 16.5L21 21"/></svg></button>
+  <button id="zoomOut" aria-label="Zoom out" title="Zoom out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M8 11h6M16.5 16.5L21 21"/></svg></button>
+  <button id="viewReset" aria-label="Reset camera view" title="Reset view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v4h-4"/></svg></button>
+</div>
+
+<nav id="tabbar" aria-label="Section navigation">
+  <a href="#hero" data-nav="hero" style="--tc:var(--teal)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+  <a href="#skills" data-nav="skills" style="--tc:var(--cyan)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/><ellipse cx="12" cy="12" rx="9" ry="4"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(60 12 12)"/></svg>Skills</a>
+  <a href="#experience" data-nav="experience" style="--tc:var(--emer)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg>Work</a>
+  <a href="#research" data-nav="research" style="--tc:var(--amber)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h8l4 4v18H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg>Research</a>
+  <a href="#education" data-nav="education" style="--tc:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8l10-4 10 4-10 4z"/><path d="M6 10.5V15c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/></svg>Education</a>
+  <a href="#contact" data-nav="contact" style="--tc:var(--vio)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact</a>
+</nav>
+
+<aside id="inspector" class="panel" role="region" aria-label="3D focus details" hidden>
+  <div class="i-head"><span id="i-kicker"></span><button id="i-close" aria-label="Close 3D focus">×</button></div>
+  <h3 id="i-title"></h3>
+  <p id="i-desc"></p>
+  <p class="i-hint">Scroll or press Esc to exit focus</p>
+</aside>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+var $ = function(s){ return document.querySelector(s); };
+var $$ = function(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); };
+var clamp = function(v,a,b){ return v<a?a:(v>b?b:v); };
+
+var state = {
+  no3d:false, scroll:0, mx:0, my:0, focus:'hero', override:null, overrideY:0,
+  hover:null, overUI:false, px:0, py:0, inside:false,
+  az:0, el:0, zoom:1, azT:0, elT:0, zoomT:1, dragging:false, dragMoved:false
+};
+
+var ARTIFACT_INFO = {
+  nano:{ acc:'#fbbf24', kicker:'3D Focus · Nanotech', title:'TiO₂ Nanoparticle Research',
+    desc:'Green-synthesized titanium dioxide nanoparticles studied for antimicrobial protection in broiler poultry — published across characteristics, food packaging, and microbial defense.' },
+  assay:{ acc:'#38e1ff', kicker:'3D Focus · Diagnostics', title:'Diagnostics & Laboratory Assays',
+    desc:'Pulsing rings echo RT-PCR thermal cycles around a bonded molecule — representing RT-PCR, Indirect ELISA (IDVET), serology, cell culture, DNA analysis, cloning, and SDS-PAGE.' },
+  ops:{ acc:'#4ade80', kicker:'3D Focus · Operations', title:'Care Coordination Network',
+    desc:'Clinician nodes orbit a central scheduling hub — therapy visit scheduling, capacity planning, RN & therapist coordination, and operational reporting across time zones.' }
+};
+
+/* ---------- toast ---------- */
+var toastTimer = null;
+function toast(msg){
+  var t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
+
+/* ---------- clipboard ---------- */
+function legacyCopy(text){
+  var ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  var ok = false; try{ ok = document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta); return ok;
+}
+$$('[data-copy]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var v = btn.getAttribute('data-copy'), label = btn.getAttribute('data-label') || 'Copied';
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(v).then(function(){ toast(label); }, function(){ toast(legacyCopy(v) ? label : 'Copy failed — please select manually'); });
+    }else{ toast(legacyCopy(v) ? label : 'Copy failed — please select manually'); }
+  });
+});
+
+/* ---------- inspector / focus ---------- */
+function setActiveCards(key){
+  $$('[data-artifact]').forEach(function(el){
+    el.classList.toggle('active', el.getAttribute('data-artifact') === key);
+  });
+}
+function focusArtifact(key){
+  if(state.override === key){ closeInspector(); return; }
+  state.override = key; state.overrideY = window.scrollY || window.pageYOffset;
+  state.azT = 0; state.elT = 0;
+  var info = ARTIFACT_INFO[key], insp = $('#inspector');
+  insp.style.setProperty('--acc', info.acc);
+  $('#i-kicker').textContent = info.kicker;
+  $('#i-title').textContent = info.title;
+  $('#i-desc').textContent = info.desc;
+  insp.querySelector('.i-hint').style.display = state.no3d ? 'none' : '';
+  insp.hidden = false; document.body.classList.add('inspecting'); setActiveCards(key);
+}
+function closeInspector(){
+  state.override = null; $('#inspector').hidden = true;
+  document.body.classList.remove('inspecting'); setActiveCards(null);
+}
+$('#i-close').addEventListener('click', closeInspector);
+$$('[data-artifact]').forEach(function(el){
+  el.addEventListener('click', function(e){ e.stopPropagation(); focusArtifact(el.getAttribute('data-artifact')); });
+  el.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); focusArtifact(el.getAttribute('data-artifact')); }
+  });
+});
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeInspector(); });
+
+/* ---------- view dock ---------- */
+function resetView(silent){
+  state.azT = 0; state.elT = 0; state.zoomT = 1;
+  if(!silent) toast('Camera view reset');
+}
+$('#zoomIn').addEventListener('click', function(){ state.zoomT = clamp(state.zoomT*0.84, .55, 2); });
+$('#zoomOut').addEventListener('click', function(){ state.zoomT = clamp(state.zoomT*1.19, .55, 2); });
+$('#viewReset').addEventListener('click', function(){ resetView(false); });
+
+/* ---------- swipe hint ---------- */
+var hint = $('#swipeHint'), hintDone = false;
+function hideHint(){ if(hintDone) return; hintDone = true; hint.style.display = 'none'; }
+$('#hintClose').addEventListener('click', hideHint);
+setTimeout(hideHint, 11000);
+
+/* ---------- scroll / spy ---------- */
+var navLinks = $$('[data-nav]');
+function onScroll(){
+  var y = window.scrollY || window.pageYOffset;
+  var max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  state.scroll = clamp(y / max, 0, 1);
+  $('#progress').style.width = (state.scroll * 100) + '%';
+  if(state.override && Math.abs(y - state.overrideY) > 90) closeInspector();
+}
+window.addEventListener('scroll', onScroll, { passive:true }); onScroll();
+
+function setSection(focusKey, navKey){
+  if(state.focus !== focusKey){ state.azT = 0; state.elT = 0; }
+  state.focus = focusKey;
+  navLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-nav') === navKey); });
+}
+if('IntersectionObserver' in window){
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting) setSection(en.target.getAttribute('data-focus'), en.target.getAttribute('data-nav'));
+    });
+  }, { rootMargin:'-42% 0px -52% 0px', threshold:0 });
+  $$('[data-spy]').forEach(function(s){ spy.observe(s); });
+
+  var ro = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); ro.unobserve(en.target); } });
+  }, { threshold:0.1 });
+  $$('.reveal').forEach(function(el){ ro.observe(el); });
+}else{
+  $$('.reveal').forEach(function(el){ el.classList.add('in'); });
+}
+
+/* ---------- pointer / orbit / tilt ---------- */
+function isUI(t){
+  return !!(t && t.closest && t.closest('a,button,.panel,.hero-inner,.stage-cap,#topbar,footer,#inspector,#dock,#tabbar'));
+}
+var dragX = 0, dragY = 0;
+window.addEventListener('pointermove', function(e){
+  state.px = e.clientX; state.py = e.clientY; state.inside = true;
+  state.mx = (e.clientX / window.innerWidth) * 2 - 1;
+  state.my = (e.clientY / window.innerHeight) * 2 - 1;
+  state.overUI = isUI(e.target);
+  if(state.dragging && e.pointerType !== 'touch'){
+    var dx = e.clientX - dragX, dy = e.clientY - dragY;
+    dragX = e.clientX; dragY = e.clientY;
+    if(Math.abs(dx) + Math.abs(dy) > 3) state.dragMoved = true;
+    state.azT -= dx * 0.0055;
+    state.elT = clamp(state.elT + dy * 0.0035, -.55, .55);
+  }
+}, { passive:true });
+window.addEventListener('pointerdown', function(e){
+  if(state.no3d || e.pointerType === 'touch' || isUI(e.target)) return;
+  state.dragging = true; state.dragMoved = false;
+  dragX = e.clientX; dragY = e.clientY;
+  document.body.classList.add('dragging');
+});
+function endDrag(){ state.dragging = false; document.body.classList.remove('dragging'); }
+window.addEventListener('pointerup', endDrag);
+window.addEventListener('pointercancel', endDrag);
+window.addEventListener('pointerleave', function(){ state.inside = false; endDrag(); });
+
+/* touch: horizontal swipe orbits, vertical swipe still scrolls the page */
+var tMode = null, tX = 0, tY = 0, lastTap = 0;
+window.addEventListener('touchstart', function(e){
+  if(state.no3d || isUI(e.target) || e.touches.length !== 1){ tMode = null; return; }
+  tMode = 'pending'; tX = e.touches[0].clientX; tY = e.touches[0].clientY;
+}, { passive:true });
+window.addEventListener('touchmove', function(e){
+  if(!tMode || e.touches.length !== 1) return;
+  var x = e.touches[0].clientX, y = e.touches[0].clientY;
+  var dx = x - tX, dy = y - tY;
+  if(tMode === 'pending'){
+    if(Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy) * 1.15){ tMode = 'orbit'; hideHint(); }
+    else if(Math.abs(dy) > 10){ tMode = 'scroll'; }
+  }
+  if(tMode === 'orbit'){
+    e.preventDefault();
+    state.azT -= dx * 0.006;
+    state.elT = clamp(state.elT + dy * 0.003, -.55, .55);
+    tX = x; tY = y;
+  }
+}, { passive:false });
+window.addEventListener('touchend', function(e){
+  if(tMode === 'pending' && !isUI(e.target)){
+    var now = Date.now();
+    if(now - lastTap < 320){ resetView(false); lastTap = 0; } else { lastTap = now; }
+  }
+  tMode = null;
+}, { passive:true });
+
+var finePointer = window.matchMedia && matchMedia('(pointer:fine)').matches;
+if(finePointer){
+  $$('.tilt').forEach(function(c){
+    c.addEventListener('pointermove', function(e){
+      var r = c.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      c.style.transform = 'perspective(900px) rotateX(' + (-y*4).toFixed(2) + 'deg) rotateY(' + (x*5).toFixed(2) + 'deg) translateY(-3px)';
+    });
+    c.addEventListener('pointerleave', function(){ c.style.transform = ''; });
+  });
+}
+
+$('#year').textContent = String(new Date().getFullYear());
+
+/* ---------- WebGL fallback ---------- */
+function fail3D(){
+  state.no3d = true; document.body.classList.add('no3d','ready');
+  $('#fallback').hidden = false; $('#webgl-note').hidden = false;
+  hideHint();
+}
+function webglOK(){
+  try{
+    var c = document.createElement('canvas');
+    return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+  }catch(e){ return false; }
+}
+
+/* ---------- THREE scene ---------- */
+function createLab(){
+  var canvas = $('#lab');
+  var smallScreen = Math.min(window.innerWidth, window.innerHeight) < 820;
+  var touchDevice = (navigator.maxTouchPoints || 0) > 0;
+  var lite = smallScreen || (touchDevice && window.innerWidth < 1024);
+
+  var renderer = new THREE.WebGLRenderer({ canvas:canvas, antialias:!lite, alpha:true, powerPreference:'high-performance' });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, lite ? 1.5 : 1.75));
+  renderer.setClearColor(0x000000, 0);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.15;
+
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0x060b1f, 16, 44);
+  var camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 120);
+
+  var PAL = { cyan:0x38e1ff, teal:0x2fe6c8, emer:0x4ade80, vio:0xa78bfa, pur:0x8b5cf6, amber:0xfbbf24, rose:0xfb7185, blue:0x60a5fa };
+  var UP = new THREE.Vector3(0,1,0), ZAX = new THREE.Vector3(0,0,1);
+
+  scene.add(new THREE.AmbientLight(0x26355e, 1.2));
+  var l1 = new THREE.PointLight(PAL.cyan, 1.15, 70); l1.position.set(8,7,8); scene.add(l1);
+  var l2 = new THREE.PointLight(PAL.vio, 1.0, 70); l2.position.set(-9,-3,6); scene.add(l2);
+  var l3 = new THREE.PointLight(PAL.amber, 0.6, 60); l3.position.set(0,9,-12); scene.add(l3);
+  var dl = new THREE.DirectionalLight(0xbfd8ff, 0.32); dl.position.set(0,8,10); scene.add(dl);
+
+  var glowTex = (function(){
+    var c = document.createElement('canvas'); c.width = c.height = 128;
+    var x = c.getContext('2d'), g = x.createRadialGradient(64,64,0,64,64,64);
+    g.addColorStop(0,'rgba(255,255,255,1)'); g.addColorStop(.25,'rgba(255,255,255,.55)'); g.addColorStop(1,'rgba(255,255,255,0)');
+    x.fillStyle = g; x.fillRect(0,0,128,128);
+    return new THREE.CanvasTexture(c);
+  })();
+  function halo(color, scale, opacity){
+    var s = new THREE.Sprite(new THREE.SpriteMaterial({ map:glowTex, color:color, transparent:true, opacity:opacity, blending:THREE.AdditiveBlending, depthWrite:false }));
+    s.scale.set(scale, scale, 1); return s;
+  }
+  function stdMat(color, ei, extra){
+    var o = { color:color, emissive:color, emissiveIntensity:ei, roughness:.32, metalness:.15 };
+    if(extra) Object.keys(extra).forEach(function(k){ o[k] = extra[k]; });
+    return new THREE.MeshStandardMaterial(o);
+  }
+  function bond(p1, p2, r, mat){
+    var d = new THREE.Vector3().subVectors(p2, p1), len = d.length();
+    var m = new THREE.Mesh(new THREE.CylinderGeometry(r, r, len, 6), mat);
+    m.position.copy(p1).addScaledVector(d, .5);
+    m.quaternion.setFromUnitVectors(UP, d.normalize());
+    return m;
+  }
+  function basisFromNormal(n){
+    var ref = Math.abs(n.x) > .9 ? new THREE.Vector3(0,1,0) : new THREE.Vector3(1,0,0);
+    var u = new THREE.Vector3().crossVectors(n, ref).normalize();
+    return { u:u, v:new THREE.Vector3().crossVectors(n, u) };
+  }
+
+  /* DNA helices */
+  function buildHelix(opt){
+    var g = new THREE.Group(), dummy = new THREE.Object3D();
+    var sGeo = new THREE.SphereGeometry(.14, lite ? 8 : 10, lite ? 8 : 10);
+    var sA = new THREE.InstancedMesh(sGeo, stdMat(opt.ca, .55), opt.n);
+    var sB = new THREE.InstancedMesh(sGeo, stdMat(opt.cb, .55), opt.n);
+    var rGeo = new THREE.CylinderGeometry(.032, .032, 1, 6);
+    var per = Math.ceil(opt.n / 4), rIdx = [0,0,0,0];
+    var rMeshes = opt.rungs.map(function(c){
+      return new THREE.InstancedMesh(rGeo, stdMat(c, .4, { transparent:true, opacity:.85 }), per);
+    });
+    var pA = new THREE.Vector3(), pB = new THREE.Vector3(), mid = new THREE.Vector3(), dir = new THREE.Vector3();
+    for(var i = 0; i < opt.n; i++){
+      var y = -opt.h/2 + opt.h * i / (opt.n - 1);
+      var a = opt.turns * Math.PI * 2 * i / (opt.n - 1);
+      pA.set(Math.cos(a)*opt.r, y, Math.sin(a)*opt.r);
+      pB.set(Math.cos(a+Math.PI)*opt.r, y, Math.sin(a+Math.PI)*opt.r);
+      dummy.scale.set(1,1,1); dummy.quaternion.set(0,0,0,1);
+      dummy.position.copy(pA); dummy.updateMatrix(); sA.setMatrixAt(i, dummy.matrix);
+      dummy.position.copy(pB); dummy.updateMatrix(); sB.setMatrixAt(i, dummy.matrix);
+      mid.addVectors(pA, pB).multiplyScalar(.5); dir.subVectors(pB, pA);
+      var len = dir.length();
+      dummy.position.copy(mid); dummy.quaternion.setFromUnitVectors(UP, dir.normalize());
+      dummy.scale.set(1, len, 1); dummy.updateMatrix();
+      var k = i % 4; rMeshes[k].setMatrixAt(rIdx[k]++, dummy.matrix);
+    }
+    g.add(sA); g.add(sB); rMeshes.forEach(function(m){ g.add(m); });
+    return g;
+  }
+  var helix = buildHelix({ h:9.5, r:1.05, turns:2.7, n:lite?56:72, ca:PAL.cyan, cb:PAL.vio, rungs:[PAL.amber, PAL.rose, PAL.teal, PAL.blue] });
+  helix.position.set(7.5, 1.1, -1); scene.add(helix);
+  var helixHalo = halo(PAL.cyan, 9, .10); helixHalo.position.copy(helix.position); scene.add(helixHalo);
+
+  var helix2 = buildHelix({ h:7, r:.8, turns:2.2, n:lite?36:48, ca:PAL.rose, cb:PAL.blue, rungs:[PAL.teal, PAL.vio, PAL.amber, PAL.cyan] });
+  helix2.position.set(-9.5, 2.2, -15); helix2.rotation.z = .35; helix2.scale.setScalar(.9); scene.add(helix2);
+  var helix2Halo = halo(PAL.vio, 7, .08); helix2Halo.position.copy(helix2.position); scene.add(helix2Halo);
+
+  /* protein ribbon */
+  var ribbon = (function(){
+    var pts = [];
+    for(var i = 0; i < 8; i++){
+      var a = i / 8 * Math.PI * 2;
+      pts.push(new THREE.Vector3(Math.cos(a)*1.7 + Math.sin(a*3)*.4, Math.sin(a*2)*.9, Math.sin(a)*1.7 + Math.cos(a*2)*.4));
+    }
+    var geo = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts, true), lite?110:160, .09, 8, true);
+    var count = geo.attributes.position.count, cols = new Float32Array(count*3), c = new THREE.Color();
+    for(var j = 0; j < count; j++){ c.setHSL(.45 + .5*(j/count), .75, .6); cols[j*3]=c.r; cols[j*3+1]=c.g; cols[j*3+2]=c.b; }
+    geo.setAttribute('color', new THREE.BufferAttribute(cols, 3));
+    var m = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ vertexColors:true, roughness:.35, metalness:.2, emissive:0x0b1230, emissiveIntensity:.6 }));
+    m.position.set(-3.5, 2.8, -13); return m;
+  })();
+  scene.add(ribbon);
+
+  var artifacts = {};
+
+  /* TiO2 cluster */
+  (function(){
+    var g = new THREE.Group(); g.position.set(-6, -.1, -8);
+    var core = new THREE.Mesh(new THREE.IcosahedronGeometry(.85, 0), stdMat(PAL.amber, .5, { flatShading:true, metalness:.45, roughness:.25 }));
+    var wire = new THREE.Mesh(new THREE.IcosahedronGeometry(1.3, 1), new THREE.MeshBasicMaterial({ color:PAL.vio, wireframe:true, transparent:true, opacity:.22 }));
+    g.add(core); g.add(wire);
+    var sats = [], satCols = [PAL.vio, 0xfcd34d, PAL.rose], n = lite ? 8 : 10;
+    for(var i = 0; i < n; i++){
+      var m = new THREE.Mesh(new THREE.OctahedronGeometry(.14 + Math.random()*.12, 0), stdMat(satCols[i%3], .6, { flatShading:true }));
+      var b = basisFromNormal(new THREE.Vector3(Math.random()-.5, Math.random()-.5, Math.random()-.5).normalize());
+      sats.push({ m:m, u:b.u, v:b.v, r:1.5 + Math.random()*.8, sp:.3 + Math.random()*.5, a0:Math.random()*6.28 });
+      g.add(m);
+    }
+    var h = halo(PAL.amber, 5.5, .30); g.add(h);
+    if(!lite) g.add(new THREE.PointLight(PAL.amber, .6, 6));
+    scene.add(g);
+    artifacts.nano = { g:g, halo:h, base:.30, glow:.4, phase:0,
+      update:function(t){
+        core.rotation.set(t*.25, t*.32, 0); wire.rotation.set(-t*.12, -t*.18, 0);
+        for(var i = 0; i < sats.length; i++){
+          var s = sats[i], a = s.a0 + t*s.sp;
+          s.m.position.set(0,0,0).addScaledVector(s.u, Math.cos(a)*s.r).addScaledVector(s.v, Math.sin(a)*s.r);
+          s.m.rotation.x = t*.8 + i; s.m.rotation.y = t*.6;
+        }
+        g.position.y = -.1 + Math.sin(t*.5)*.15;
+      } };
+  })();
+
+  /* assay rings */
+  (function(){
+    var g = new THREE.Group(); g.position.set(0, -.3, -9);
+    var rings = [], ringCols = [PAL.cyan, PAL.teal, PAL.blue, PAL.cyan];
+    for(var i = 0; i < 4; i++){
+      var mat = new THREE.MeshBasicMaterial({ color:ringCols[i], transparent:true, opacity:.3, blending:THREE.AdditiveBlending, depthWrite:false });
+      var ring = new THREE.Mesh(new THREE.TorusGeometry(1 + i*.3, .022, 8, lite?48:72), mat);
+      ring.rotation.x = Math.PI/2; ring.position.y = -.5 + i*.33;
+      rings.push(ring); g.add(ring);
+    }
+    var mol = new THREE.Group(), atomCols = [PAL.cyan, PAL.teal, PAL.blue, PAL.vio, PAL.teal, PAL.cyan], pts = [];
+    for(var j = 0; j < 6; j++){
+      var a = j*Math.PI/3, p = new THREE.Vector3(Math.cos(a)*.55, Math.sin(a)*.55, 0);
+      pts.push(p);
+      var atom = new THREE.Mesh(new THREE.SphereGeometry(.13, 12, 12), stdMat(atomCols[j], .7));
+      atom.position.copy(p); mol.add(atom);
+    }
+    var bondMat = stdMat(0x7da2c9, .3);
+    for(var k = 0; k < 6; k++) mol.add(bond(pts[k], pts[(k+1)%6], .035, bondMat));
+    [[0, PAL.amber], [2, PAL.rose]].forEach(function(cfg){
+      var p0 = pts[cfg[0]], p1 = p0.clone().multiplyScalar(1.9);
+      var atom = new THREE.Mesh(new THREE.SphereGeometry(.17, 12, 12), stdMat(cfg[1], .7));
+      atom.position.copy(p1); mol.add(atom); mol.add(bond(p0, p1, .035, bondMat));
+    });
+    g.add(mol);
+    var h = halo(PAL.cyan, 5, .28); g.add(h);
+    if(!lite) g.add(new THREE.PointLight(PAL.cyan, .5, 6));
+    scene.add(g);
+    artifacts.assay = { g:g, halo:h, base:.28, glow:.4, phase:2,
+      update:function(t){
+        mol.rotation.y = t*.45;
+        for(var i = 0; i < rings.length; i++){
+          var w = Math.sin(t*2.4 - i*1.1);
+          rings[i].scale.setScalar(1 + .16*w);
+          rings[i].material.opacity = .18 + .22*(.5 + .5*w);
+        }
+        g.position.y = -.3 + Math.sin(t*.45 + 1)*.15;
+      } };
+  })();
+
+  /* care coordination orbit */
+  (function(){
+    var g = new THREE.Group(); g.position.set(6, 0, -8);
+    var center = new THREE.Mesh(new THREE.SphereGeometry(.42, 18, 18), stdMat(PAL.emer, .7));
+    g.add(center);
+    var tilts = [[.5,.2], [-.4,.6], [.9,-.3]], radii = [1.25, 1.75, 2.25];
+    var nodeCols = [PAL.emer, PAL.cyan, PAL.amber, PAL.blue, PAL.teal, PAL.vio, PAL.emer, PAL.cyan, PAL.rose];
+    var nodes = [], ni = 0;
+    tilts.forEach(function(tl, ri){
+      var q = new THREE.Quaternion().setFromEuler(new THREE.Euler(tl[0], 0, tl[1]));
+      var n = new THREE.Vector3(0,1,0).applyQuaternion(q);
+      var u = new THREE.Vector3(1,0,0).applyQuaternion(q), v = new THREE.Vector3(0,0,1).applyQuaternion(q);
+      var ring = new THREE.Mesh(new THREE.TorusGeometry(radii[ri], .014, 6, lite?48:72),
+        new THREE.MeshBasicMaterial({ color:PAL.blue, transparent:true, opacity:.22, blending:THREE.AdditiveBlending, depthWrite:false }));
+      ring.quaternion.setFromUnitVectors(ZAX, n); g.add(ring);
+      for(var k = 0; k < 3; k++){
+        var m = new THREE.Mesh(new THREE.SphereGeometry(.13 + Math.random()*.04, 10, 10), stdMat(nodeCols[ni], .7));
+        nodes.push({ m:m, u:u, v:v, r:radii[ri], sp:(.25 + .12*ri) * (ri%2 ? -1 : 1), a0:k*2.09 + ri });
+        g.add(m); ni++;
+      }
+    });
+    var arr = new Float32Array((nodes.length + 2)*6);
+    var lineGeo = new THREE.BufferGeometry();
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(arr, 3));
+    g.add(new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({ color:PAL.emer, transparent:true, opacity:.3, blending:THREE.AdditiveBlending, depthWrite:false })));
+    var h = halo(PAL.emer, 5.5, .26); g.add(h);
+    if(!lite) g.add(new THREE.PointLight(PAL.emer, .5, 6));
+    scene.add(g);
+    artifacts.ops = { g:g, halo:h, base:.26, glow:.4, phase:4,
+      update:function(t){
+        center.rotation.y = t*.4;
+        for(var i = 0; i < nodes.length; i++){
+          var nd = nodes[i], a = nd.a0 + t*nd.sp;
+          nd.m.position.set(0,0,0).addScaledVector(nd.u, Math.cos(a)*nd.r).addScaledVector(nd.v, Math.sin(a)*nd.r);
+          nd.m.scale.setScalar(1 + .18*Math.sin(t*2.6 + i*1.7));
+          arr[i*6]=0; arr[i*6+1]=0; arr[i*6+2]=0;
+          arr[i*6+3]=nd.m.position.x; arr[i*6+4]=nd.m.position.y; arr[i*6+5]=nd.m.position.z;
+        }
+        var extras = [[0,4],[3,7]];
+        for(var e = 0; e < 2; e++){
+          var A = nodes[extras[e][0]].m.position, B = nodes[extras[e][1]].m.position, o = (nodes.length + e)*6;
+          arr[o]=A.x; arr[o+1]=A.y; arr[o+2]=A.z; arr[o+3]=B.x; arr[o+4]=B.y; arr[o+5]=B.z;
+        }
+        lineGeo.attributes.position.needsUpdate = true;
+        g.position.y = Math.sin(t*.4 + 2)*.15;
+      } };
+  })();
+
+  /* cells */
+  var cells = [];
+  var cellCfg = [[-3,2.2,-5,.6,PAL.teal],[9,-2.4,-7,.8,PAL.vio],[-11,3,-10,.7,PAL.rose],[2.5,4.2,-13,.55,PAL.cyan],[11.5,2.5,-12,.75,PAL.emer],[-6,-3,-12,.5,PAL.blue]];
+  if(lite) cellCfg = cellCfg.slice(0,4);
+  cellCfg.forEach(function(cfg, i){
+    var g = new THREE.Group();
+    g.add(new THREE.Mesh(new THREE.SphereGeometry(cfg[3], 18, 18),
+      new THREE.MeshPhongMaterial({ color:cfg[4], transparent:true, opacity:.10, shininess:90, depthWrite:false })));
+    g.add(new THREE.Mesh(new THREE.SphereGeometry(cfg[3]*.32, 12, 12), stdMat(cfg[4], .5)));
+    g.position.set(cfg[0], cfg[1], cfg[2]);
+    scene.add(g); cells.push({ g:g, y0:cfg[1], ph:i*1.3 });
+  });
+
+  /* particles */
+  function particleCloud(count, size, opacity, spread, zMin, zMax){
+    var pos = new Float32Array(count*3), col = new Float32Array(count*3);
+    var palette = [PAL.cyan, PAL.teal, PAL.vio, PAL.amber, PAL.rose, PAL.blue, PAL.emer].map(function(c){ return new THREE.Color(c); });
+    for(var i = 0; i < count; i++){
+      pos[i*3] = (Math.random()-.5)*2*spread;
+      pos[i*3+1] = -7 + Math.random()*17;
+      pos[i*3+2] = zMin + Math.random()*(zMax - zMin);
+      var c = palette[(Math.random()*palette.length)|0];
+      col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
+    }
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    var pts = new THREE.Points(geo, new THREE.PointsMaterial({ size:size, map:glowTex, vertexColors:true, transparent:true, opacity:opacity, depthWrite:false, blending:THREE.AdditiveBlending, sizeAttenuation:true }));
+    scene.add(pts); return pts;
+  }
+  var dust1 = particleCloud(lite?540:900, .3, .78, 20, -18, 5);
+  var dust2 = particleCloud(lite?280:500, .18, .5, 24, -24, -4);
+
+  var grid = new THREE.GridHelper(70, 46, 0x1e3a5f, 0x12233f);
+  grid.material.transparent = true; grid.material.opacity = .35; grid.position.y = -4.4;
+  scene.add(grid);
+
+  /* raycast proxies */
+  var raycaster = new THREE.Raycaster(), pointer = new THREE.Vector2(), proxies = [];
+  Object.keys(artifacts).forEach(function(key){
+    var p = new THREE.Mesh(new THREE.SphereGeometry(2.3, 8, 8), new THREE.MeshBasicMaterial({ visible:false }));
+    p.position.copy(artifacts[key].g.position); p.userData.key = key;
+    scene.add(p); proxies.push(p);
+  });
+  function pick(x, y){
+    pointer.set((x / window.innerWidth)*2 - 1, -(y / window.innerHeight)*2 + 1);
+    raycaster.setFromCamera(pointer, camera);
+    var hits = raycaster.intersectObjects(proxies, false);
+    return hits.length ? hits[0].object.userData.key : null;
+  }
+  window.addEventListener('click', function(e){
+    if(state.no3d || state.dragMoved || isUI(e.target)) return;
+    var key = pick(e.clientX, e.clientY);
+    if(key){ hideHint(); focusArtifact(key); }
+  });
+
+  /* camera targets */
+  var FOCI = {
+    hero:{ p:[0,.6,11.5], l:[2.2,.4,-2], r:3.4 },
+    skills:{ p:[0,.6,1.8], l:[0,-.2,-8.6], r:7 },
+    nano:{ p:[-6,.3,-4], l:[-6,-.1,-8], r:2.7 },
+    assay:{ p:[0,.4,-5], l:[0,-.3,-9], r:2.7 },
+    ops:{ p:[6,.5,-4], l:[6,0,-8], r:2.7 },
+    experience:{ p:[7.8,1.5,-3.2], l:[6,0,-8], r:3 },
+    research:{ p:[-3.2,1,-3.6], l:[-3,-.2,-8.6], r:5 },
+    education:{ p:[7.5,1.4,4.6], l:[7.5,1.1,-1], r:3.4 },
+    contact:{ p:[0,4.4,13.5], l:[0,-1.2,-6], r:6.5 }
+  };
+  var NARROW_MAP = { skills:'assay', research:'nano', experience:'ops' };
+  var SECTION_GLOW = { skills:'all', experience:'ops', research:'nano' };
+
+  var desired = new THREE.Vector3(), lookT = new THREE.Vector3(), lookCur = new THREE.Vector3(2.2,.4,-2);
+  var basePos = new THREE.Vector3(), off = new THREE.Vector3(), rightAxis = new THREE.Vector3();
+  camera.position.set(0, 1.8, 15);
+
+  function resize(){
+    camera.aspect = window.innerWidth / Math.max(1, window.innerHeight);
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight, false);
+  }
+  window.addEventListener('resize', resize);
+  window.addEventListener('orientationchange', function(){ setTimeout(resize, 220); });
+  resize();
+
+  canvas.addEventListener('webglcontextlost', function(e){ e.preventDefault(); fail3D(); }, false);
+
+  var t = 0, last = performance.now(), frame = 0, firstFrame = true;
+  function tick(now){
+    requestAnimationFrame(tick);
+    if(document.hidden){ last = now; return; }
+    var step = Math.min((now - last)/1000, .05); last = now;
+    frame++; t += step;
+
+    var narrow = camera.aspect < 1.05;
+    var rawKey = state.override || state.focus;
+    var key = state.override || (narrow ? (NARROW_MAP[rawKey] || rawKey) : rawKey);
+    var f = FOCI[key] || FOCI.hero;
+
+    lookT.set(f.l[0], f.l[1], f.l[2]);
+    basePos.set(f.p[0], f.p[1], f.p[2]);
+    off.subVectors(basePos, lookT);
+    var baseDist = off.length(), dist;
+    if(narrow){
+      dist = Math.min(27, Math.max(baseDist, (f.r || 3) / (0.52 * Math.max(camera.aspect, .34))));
+      lookT.y -= 0.55;
+    }else{
+      dist = baseDist * (camera.aspect < 1.3 ? 1.12 : 1);
+    }
+
+    var kd = 1 - Math.exp(-step*6);
+    state.az += (state.azT - state.az) * kd;
+    state.el += (state.elT - state.el) * kd;
+    state.zoom += (state.zoomT - state.zoom) * kd;
+
+    off.normalize().multiplyScalar(dist * state.zoom);
+    off.applyAxisAngle(UP, state.az);
+    rightAxis.crossVectors(off, UP);
+    if(rightAxis.lengthSq() < 1e-6) rightAxis.set(1,0,0); else rightAxis.normalize();
+    off.applyAxisAngle(rightAxis, state.el);
+    desired.copy(lookT).add(off);
+
+    if(narrow){
+      desired.y += -state.scroll*.4;
+    }else{
+      desired.x += state.mx*.7; desired.y += -state.my*.5 - state.scroll*.7;
+      lookT.x += state.mx*.25; lookT.y += -state.my*.15;
+    }
+
+    var k = 1 - Math.exp(-step * 3);
+    camera.position.lerp(desired, k);
+    lookCur.lerp(lookT, k);
+    camera.lookAt(lookCur);
+    if(!narrow) camera.rotation.z += state.mx*.015;
+
+    helix.rotation.y = t*.16 + state.scroll*2.2;
+    helix.position.y = 1.1 + Math.sin(t*.35)*.18;
+    helix2.rotation.y = -t*.12 + state.scroll*1.4;
+    ribbon.rotation.y = t*.12; ribbon.rotation.x = t*.07 + state.scroll*.8;
+    dust1.rotation.y = t*.014; dust1.position.y = Math.sin(t*.12)*.4;
+    dust2.rotation.y = -t*.01;
+    for(var c = 0; c < cells.length; c++){
+      cells[c].g.position.y = cells[c].y0 + Math.sin(t*.5 + cells[c].ph)*.4;
+      cells[c].g.rotation.y = t*.15 + cells[c].ph;
+    }
+
+    var active = state.override || SECTION_GLOW[state.focus] || null;
+    Object.keys(artifacts).forEach(function(ak){
+      var a = artifacts[ak];
+      a.update(t);
+      var target = (active === 'all' || active === ak) ? 1 : .4;
+      if(state.hover === ak) target = Math.min(1.15, target + .3);
+      a.glow += (target - a.glow) * (1 - Math.exp(-step*4));
+      a.halo.material.opacity = a.base * a.glow * (.9 + .1*Math.sin(t*1.4 + a.phase));
+      a.g.scale.setScalar(1 + .05*Math.max(0, (a.glow - .4)/.6));
+    });
+
+    if(finePointer && state.inside && !state.overUI && frame % 6 === 0){
+      state.hover = pick(state.px, state.py);
+      document.body.style.cursor = state.hover ? 'pointer' : (state.dragging ? 'grabbing' : 'grab');
+    }else if(state.overUI && state.hover){ state.hover = null; document.body.style.cursor = ''; }
+    else if(state.overUI){ document.body.style.cursor = ''; }
+
+    renderer.render(scene, camera);
+    if(firstFrame){ firstFrame = false; document.body.classList.add('ready'); }
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ---------- boot ---------- */
+if(typeof THREE === 'undefined' || !webglOK()){
+  fail3D();
+}else{
+  try{ createLab(); }
+  catch(err){ if(window.console) console.warn('3D init failed:', err); fail3D(); }
+}
+})();
+</script>
+</body>
+</html>
